@@ -1,0 +1,119 @@
+.about-container {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Arial, sans-serif';
+    padding: 30px;
+    max-width: 950px;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background: linear-gradient(to bottom, #1a1a1a, #4c0519);
+    border-radius: 10px;
+}
+
+  
+  .profile-pic {
+    border-radius: 10px;
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    margin-right: 30px;
+  }
+  
+  .about-text-box {
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  .about-title {
+    font-size: 2.5rem;
+    color: #eee2e6; /* Rose color */
+    font-weight: bold; /* Bold text */
+  }
+  
+  .about-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+  
+  .film-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .film-frame {
+    background-color: #4c0519; /* Rose color */
+    color: #000000;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .film-frame:hover {
+    background-color: #bb9090; /* Hover effect */
+    color: #4c0519;
+    transform: scale(1.1);
+  }
+  
+  /* Media query for devices with a max-width of 600px */
+@media only screen and (max-width: 600px) {
+  .about-container {
+    padding: 20px;
+  }
+
+  .about-content {
+    flex-direction: column; /* Stack content vertically */
+    padding: 20px;
+  }
+
+  .profile-pic {
+    width: 150px; /* Reduce image size */
+    height: 225px;
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 20px; /* Add margin below image */
+  }
+
+  .about-text-box {
+    max-width: 100%;
+    text-align: center; /* Center-align text on smaller screens */
+  }
+
+  .about-title {
+    font-size: 2rem; /* Adjust title size */
+  }
+
+  .about-text {
+    font-size: 1rem; /* Adjust text size */
+    line-height: 1.4;
+  }
+
+  .film-strip {
+    margin-top: 20px; /* Reduce margin */
+  }
+
+  .film-frame {
+    width: 45px; /* Adjust film frame size */
+    height: 45px;
+    margin: 0 5px; /* Reduce space between frames */
+    font-size: 1.3rem;
+  }
+}
+

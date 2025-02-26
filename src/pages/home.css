@@ -1,0 +1,28 @@
+/* home.css */
+
+/* Hide scrollbar for WebKit-based browsers (Chrome, Safari) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* New styles for Favorite Dialogue of the Day */
+.favorite-dialogue {
+  margin-top: 0.5rem; /* Space above the section */
+}
+
+.favorite-dialogue h2 {
+  font-family: 'Cursive', sans-serif; /* Adjust font as needed */
+  font-size: 2rem; /* Size for the title */
+  color: white; /* Title color */
+}
+
+.favorite-dialogue p {
+  font-size: 1.5rem; /* Size for the dialogue text */
+  color: #ccc; /* Dialogue text color */
+}

@@ -1,0 +1,74 @@
+/* Media query for devices with a max-width of 600px */
+@media (max-width: 600px) {
+    .navbar .container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .navbar img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px; /* Adjust the logo size */
+    }
+  
+    .navbar .flex {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+  
+    .navbar .flex.space-x-6 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+  
+    .navbar .flex.space-x-6 a {
+      margin: 5px 0;
+    }
+  
+    .navbar .flex.items-center.space-x-6 {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .navbar .flex.items-center.space-x-6 a {
+      width: 100%;
+      text-align: center;
+      margin: 5px 0;
+    }
+  
+    .navbar .dropdown-menu {
+      left: 0;
+      right: 0;
+      width: 100%;
+    }
+  
+    .navbar .dropdown-menu a {
+      padding: 10px 15px;
+      text-align: center;
+    }
+  }
+  
+  /* Media query for devices with a max-width of 400px */
+  @media (max-width: 400px) {
+    .navbar img {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .navbar .flex.space-x-6 a {
+      font-size: 0.9rem; /* Reduce font size for links */
+    }
+  
+    .navbar .dropdown-menu a {
+      padding: 8px 10px;
+      font-size: 0.9rem;
+    }
+  
+    .navbar .signin-signup {
+      padding: 8px 10px;
+      font-size: 0.9rem;
+    }
+  }
+  
