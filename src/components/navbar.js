@@ -1,5 +1,4 @@
-// Navbar.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FilmIcon } from '@heroicons/react/24/outline';
 import logo from "../assets/logo.webp";
@@ -11,12 +10,20 @@ const Navbar = () => {
   const [isTvShowsOpen, setIsTvShowsOpen] = useState(false);
   const [isSpecialListsOpen, setIsSpecialListsOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-
+  
   const { isAuthenticated, user, logout } = useAuth0();
   const navigate = useNavigate();
 
   const handleSignInClick = () => {
     navigate('/signup');
+  };
+
+  // Function to open menu and set a timer to close it
+  const toggleMenu = (menuSetter) => {
+    menuSetter((prev) => !prev);
+    setTimeout(() => {
+      menuSetter(false);
+    }, 2000);
   };
 
   return (
@@ -31,7 +38,7 @@ const Navbar = () => {
 
             {/* Movies Dropdown */}
             <div className="relative">
-              <button onClick={() => setIsMoviesOpen(!isMoviesOpen)} className="hover:text-gray-200">
+              <button onClick={() => toggleMenu(setIsMoviesOpen)} className="hover:text-gray-200">
                 Movies
               </button>
               {isMoviesOpen && (
@@ -44,7 +51,7 @@ const Navbar = () => {
 
             {/* TV Shows Dropdown */}
             <div className="relative">
-              <button onClick={() => setIsTvShowsOpen(!isTvShowsOpen)} className="hover:text-gray-200">
+              <button onClick={() => toggleMenu(setIsTvShowsOpen)} className="hover:text-gray-200">
                 TV Shows
               </button>
               {isTvShowsOpen && (
@@ -57,7 +64,7 @@ const Navbar = () => {
 
             {/* Special Lists Dropdown */}
             <div className="relative">
-              <button onClick={() => setIsSpecialListsOpen(!isSpecialListsOpen)} className="hover:text-gray-200">
+              <button onClick={() => toggleMenu(setIsSpecialListsOpen)} className="hover:text-gray-200">
                 Special Lists
               </button>
               {isSpecialListsOpen && (
@@ -80,7 +87,7 @@ const Navbar = () => {
           {isAuthenticated ? (
             <div className="relative">
               <button
-                onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                onClick={() => toggleMenu(setIsProfileMenuOpen)}
                 className="focus:outline-none"
               >
                 <img
