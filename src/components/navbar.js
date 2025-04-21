@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FilmIcon } from '@heroicons/react/24/outline';
-import logo from "../assets/logo.webp";
+import logo from '../assets/logo.webp';
 import { useAuth0 } from '@auth0/auth0-react';
-import './navbar.css';
 
 const Navbar = () => {
   const [isMoviesOpen, setIsMoviesOpen] = useState(false);
   const [isTvShowsOpen, setIsTvShowsOpen] = useState(false);
   const [isSpecialListsOpen, setIsSpecialListsOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const { isAuthenticated, user, logout } = useAuth0();
   const navigate = useNavigate();
+  const mobileMenuRef = useRef();
 
   const handleSignInClick = () => {
     navigate('/signup');
   };
 
-  // Function to open menu and set a timer to close it
   const toggleMenu = (menuSetter) => {
     menuSetter((prev) => !prev);
     setTimeout(() => {
@@ -26,23 +26,39 @@ const Navbar = () => {
     }, 2000);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target) &&
+        !event.target.closest('[data-toggle="mobile-menu"]')
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <nav className="sticky top-0 bg-gradient-to-r from-[#2d030f] to-[#4c0519] text-white p-2 shadow-lg z-50">
       <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center">
-          <img src={logo} alt="Logo" className="w-10 h-10 rounded-full mr-4" />
-          
-          <div className="flex space-x-6">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="Logo" className="w-10 h-10 rounded-full" />
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex items-center w-full relative">
+          <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-6 text-lg">
             <Link to="/" className="hover:text-gray-200">Home</Link>
             <Link to="/about" className="hover:text-gray-200">About</Link>
 
             {/* Movies Dropdown */}
             <div className="relative">
-              <button onClick={() => toggleMenu(setIsMoviesOpen)} className="hover:text-gray-200">
-                Movies
-              </button>
+              <button onClick={() => toggleMenu(setIsMoviesOpen)} className="hover:text-gray-200">Movies</button>
               {isMoviesOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-gradient-to-r from-[#2d030f] to-[#4c0519] text-white rounded-md shadow-lg">
+                <div className="absolute left-0 mt-2 w-48 bg-gradient-to-r from-[#2d030f] to-[#4c0519] text-white rounded-md shadow-lg z-50">
                   <Link to="/hollymovie" className="block px-4 py-2 hover:text-gray-300">Hollywood Movies</Link>
                   <Link to="/asianmovie" className="block px-4 py-2 hover:text-gray-300">Asian Movies</Link>
                 </div>
@@ -51,11 +67,9 @@ const Navbar = () => {
 
             {/* TV Shows Dropdown */}
             <div className="relative">
-              <button onClick={() => toggleMenu(setIsTvShowsOpen)} className="hover:text-gray-200">
-                TV Shows
-              </button>
+              <button onClick={() => toggleMenu(setIsTvShowsOpen)} className="hover:text-gray-200">TV Shows</button>
               {isTvShowsOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-gradient-to-r from-[#2d030f] to-[#4c0519] text-white rounded-md shadow-lg">
+                <div className="absolute left-0 mt-2 w-48 bg-gradient-to-r from-[#2d030f] to-[#4c0519] text-white rounded-md shadow-lg z-50">
                   <Link to="/tvshow" className="block px-4 py-2 hover:text-gray-300">American Shows</Link>
                   <Link to="/dramas" className="block px-4 py-2 hover:text-gray-300">Asian Dramas</Link>
                 </div>
@@ -64,9 +78,7 @@ const Navbar = () => {
 
             {/* Special Lists Dropdown */}
             <div className="relative">
-              <button onClick={() => toggleMenu(setIsSpecialListsOpen)} className="hover:text-gray-200">
-                Special Lists
-              </button>
+              <button onClick={() => toggleMenu(setIsSpecialListsOpen)} className="hover:text-gray-200">Special Lists</button>
               {isSpecialListsOpen && (
                 <div className="absolute left-0 mt-2 w-48 bg-gradient-to-r from-[#2d030f] to-[#4c0519] text-white rounded-md shadow-lg z-50">
                   <Link to="/topmovies" className="block px-4 py-2 hover:text-gray-300">Top Ten Movies</Link>
@@ -74,49 +86,99 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            
+
             <Link to="/getintouch" className="hover:text-gray-200">Get in Touch</Link>
-            <Link to="/wishlist" className="text-white hover:text-gray-200">
+            <Link to="/wishlist" className="hover:text-gray-200">
               <FilmIcon className="w-6 h-6" />
             </Link>
           </div>
+
+          <div className="ml-auto">
+            {isAuthenticated ? (
+              <div className="relative">
+                <button onClick={() => toggleMenu(setIsProfileMenuOpen)}>
+                  <img src={user.picture} alt="User" className="w-10 h-10 rounded-full" />
+                </button>
+                {isProfileMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-32 bg-gradient-to-r from-[#2d030f] to-[#4c0519] text-white rounded-md shadow-lg z-50">
+                    <button
+                      onClick={() => logout({ returnTo: window.location.origin })}
+                      className="block w-full text-left px-4 py-2 hover:bg-rose-800 rounded-md"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button
+                onClick={handleSignInClick}
+                className="bg-rose-950 text-white px-4 py-2 rounded-lg hover:bg-rose-800 transition-colors"
+              >
+                Sign In/Sign Up
+              </button>
+            )}
+          </div>
         </div>
 
-        {/* Sign In/Sign Up or Profile Picture with Dropdown */}
-        <div className="flex items-center space-x-6">
+        {/* Hamburger (Mobile Only) */}
+        <button
+          className="lg:hidden z-50 relative text-white"
+          data-toggle="mobile-menu"
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsMobileMenuOpen((prev) => !prev);
+          }}
+        >
+          {isMobileMenuOpen ? (
+            <svg className="w-8 h-8" fill="none" stroke="white" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-8 h-8" fill="none" stroke="white" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div ref={mobileMenuRef} className="lg:hidden bg-[#3c0d15] px-6 py-4 text-white space-y-2">
+          <Link to="/" className="block" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+          <Link to="/about" className="block" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+          <Link to="/hollymovie" className="block" onClick={() => setIsMobileMenuOpen(false)}>Hollywood Movies</Link>
+          <Link to="/asianmovie" className="block" onClick={() => setIsMobileMenuOpen(false)}>Asian Movies</Link>
+          <Link to="/tvshow" className="block" onClick={() => setIsMobileMenuOpen(false)}>American Shows</Link>
+          <Link to="/dramas" className="block" onClick={() => setIsMobileMenuOpen(false)}>Asian Dramas</Link>
+          <Link to="/topmovies" className="block" onClick={() => setIsMobileMenuOpen(false)}>Top Ten Movies</Link>
+          <Link to="/topshows" className="block" onClick={() => setIsMobileMenuOpen(false)}>Top Ten TV Shows</Link>
+          <Link to="/getintouch" className="block" onClick={() => setIsMobileMenuOpen(false)}>Get in Touch</Link>
+          <Link to="/wishlist" className="block" onClick={() => setIsMobileMenuOpen(false)}>Wishlist</Link>
+
           {isAuthenticated ? (
-            <div className="relative">
-              <button
-                onClick={() => toggleMenu(setIsProfileMenuOpen)}
-                className="focus:outline-none"
-              >
-                <img
-                  src={user.picture}
-                  alt={user.name}
-                  className="w-10 h-10 rounded-full"
-                />
-              </button>
-              {isProfileMenuOpen && (
-                <div className="absolute right-0 mt-2 w-32 bg-gradient-to-r from-[#2d030f] to-[#4c0519] text-white rounded-md shadow-lg z-50">
-                  <button
-                    onClick={() => logout({ returnTo: window.location.origin })}
-                    className="block w-full text-left px-4 py-2 hover:bg-rose-800 rounded-md"
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
+            <button
+              onClick={() => {
+                logout({ returnTo: window.location.origin });
+                setIsMobileMenuOpen(false);
+              }}
+              className="text-left text-sm text-white hover:text-red-300"
+            >
+              Logout
+            </button>
           ) : (
             <button
-              onClick={handleSignInClick}
-              className="bg-rose-950 text-white px-4 py-2 rounded-lg hover:bg-rose-800 transition-colors"
+              onClick={() => {
+                handleSignInClick();
+                setIsMobileMenuOpen(false);
+              }}
+              className="bg-rose-900 text-white px-3 py-1 rounded text-sm hover:bg-rose-700"
             >
-              Sign In/Sign Up
+              Sign In
             </button>
           )}
         </div>
-      </div>
+      )}
     </nav>
   );
 };

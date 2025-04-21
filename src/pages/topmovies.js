@@ -74,65 +74,67 @@ const movies = [
 ];
 
 export default function TopMoviesList() {
-    const [isBouncing, setIsBouncing] = useState(true);
-    const [selectedMovie, setSelectedMovie] = useState(null);
-  
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setIsBouncing(false);
-      }, 1000); // Stop bouncing after 1 second
-  
-      return () => clearTimeout(timer); // Cleanup the timer
-    }, []);
-  
-    const handleMovieClick = (movie) => {
-      setSelectedMovie(movie);
-    };
-  
-    const handleCloseClick = () => {
-      setSelectedMovie(null);
-    };
-  
-    return (
-      <div className="bg-black min-h-screen flex items-center justify-center">
-        <div className="text-white p-8">
-          <h1 className="text-5xl font-bold mb-8 text-white-950 text-center animate-pulse">Top 10 Movies of All Time</h1>
-          <ul className="space-y-4">
-            {movies.map((movie, index) => (
-              <li
-                key={index}
-                onClick={() => handleMovieClick(movie)}
-                className={`cursor-pointer bg-rose-950 p-4 rounded-lg text-xl font-semibold shadow-lg hover:shadow-rose-700 transition-shadow duration-300 ease-in-out flex items-center ${isBouncing ? 'animate-bounce' : ''}`}
-                style={{ animationDelay: `${index * 0.1}s`, width: '700px', height: '100px' }} // Adjust height as needed
-              >
-                <img
-                  src={movie.imageUrl}
-                  alt={movie.title}
-                  className="w-16 h-24 object-cover rounded-md mr-4" // Adjust size as needed
-                />
-                <span>{index + 1}. {movie.title}</span>
-              </li>
-            ))}
-          </ul>
-  
-          {selectedMovie && (
-            <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-              <div className="bg-gradient-to-b from-[#1a1a1a] to-[#4c0519] text-white p-8 rounded-lg flex w-3/4 md:w-1/2 lg:w-1/2">
-                <img
-                  src={selectedMovie.imageUrl}
-                  alt={selectedMovie.title}
-                  className="w-1/3 h-auto object-cover rounded-md mr-4"
-                />
-                <div className="flex flex-col justify-between w-2/3">
-                  <button onClick={handleCloseClick} className="self-end text-2xl font-bold mb-4">X</button>
-                  <h2 className="text-2xl font-bold mb-4">{selectedMovie.title}</h2>
-                  <p className="text-lg mb-4">{selectedMovie.description}</p>
-                  <p className="text-lg font-semibold">Rating: {selectedMovie.rating}</p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+  const [isBouncing, setIsBouncing] = useState(true);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsBouncing(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+  const handleCloseClick = () => {
+    setSelectedMovie(null);
+  };
+
+  return (
+    <div className="bg-black min-h-screen flex items-center justify-center px-2 sm:px-4">
+      <div className="text-white py-8 w-full max-w-screen-xl">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center animate-pulse">
+          Top 10 Movies of All Time
+        </h1>
+        <ul className="space-y-4 flex flex-col items-center">
+          {movies.map((movie, index) => (
+            <li
+              key={index}
+              onClick={() => handleMovieClick(movie)}
+              className={`cursor-pointer bg-rose-950 px-4 py-3 rounded-lg text-base sm:text-xl font-semibold shadow-lg hover:shadow-rose-700 transition-shadow duration-300 ease-in-out flex items-center w-full sm:w-[500px] md:w-[700px] h-auto sm:h-[100px] ${isBouncing ? 'animate-bounce' : ''}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <img
+                src={movie.imageUrl}
+                alt={movie.title}
+                className="w-12 h-16 sm:w-16 sm:h-24 object-cover rounded-md mr-4"
+              />
+              <span>{index + 1}. {movie.title}</span>
+            </li>
+          ))}
+        </ul>
+
+        {selectedMovie && (
+  <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-2">
+    <div className="bg-gradient-to-b from-[#1a1a1a] to-[#4c0519] text-white p-3 md:p-8 rounded-2xl flex flex-col md:flex-row w-full max-w-xs sm:max-w-sm md:max-w-2xl">
+      <img
+        src={selectedMovie.imageUrl}
+        alt={selectedMovie.title}
+        className="w-full h-40 md:w-1/3 md:h-auto object-cover rounded-lg mb-3 md:mb-0 md:mr-4"
+      />
+      <div className="flex flex-col justify-between w-full md:w-2/3 text-sm">
+        <button onClick={handleCloseClick} className="self-end text-lg md:text-2xl font-bold mb-1 md:mb-4">×</button>
+        <h2 className="text-base md:text-2xl font-bold mb-1 md:mb-4">{selectedMovie.title}</h2>
+        <p className="text-xs md:text-lg mb-2 md:mb-4">{selectedMovie.description}</p>
+        <p className="text-xs md:text-lg font-semibold">Rating: {selectedMovie.rating}</p>
       </div>
-    );
-  }
+    </div>
+  </div>
+)}
+
+      </div>
+    </div>
+  );
+}
