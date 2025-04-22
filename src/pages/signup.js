@@ -19,31 +19,28 @@ const SignUp = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTextIndex((prevIndex) => (prevIndex + 1) % textLines.length);
-    }, 3000); // Change text every 3 seconds
-
+    }, 3000);
     return () => clearInterval(intervalId);
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       alert('Please enter a valid email address.');
       return;
     }
 
-    // Handle sign-up logic here (e.g., send data to backend)
+    // Handle sign-up logic here
 
-    // Redirect to home page after successful sign-up
     navigate('/');
   };
 
   const handleGoogleSignIn = async () => {
     try {
       await loginWithPopup({
-        connection: 'google-oauth2' // Directly sign in with Google
+        connection: 'google-oauth2'
       });
       navigate('/');
     } catch (error) {
@@ -53,20 +50,21 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left Side - Review Community Text */}
-      <div className="w-1/2 bg-black flex flex-col items-center justify-center p-8 relative">
-        <h1 className="text-4xl font-bold text-white absolute top-68">
+    <div className="min-h-screen flex flex-col md:flex-row">
+      {/* Left Side */}
+      <div className="w-full md:w-1/2 bg-black flex flex-col items-center justify-center p-6 md:p-8 relative">
+        <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center md:absolute md:top-68">
           Join Our Review Community!
         </h1>
-        <div className="mt-16 text-white space-y-4">
+        <div className="text-white space-y-4 text-center mt-4 md:mt-16">
           <p>{textLines[textIndex]}</p>
         </div>
       </div>
-      {/* Right Side - Sign Up Form */}
-      <div className="w-1/2 bg-gradient-to-b from-[#1a1a1a] to-[#4c0519] flex items-center justify-center p-8">
-        <div className="bg-black p-8 rounded-lg shadow-lg w-full max-w-md space-y-6">
-          <h2 className="text-4xl font-bold text-white text-center animate-pulse">Sign Up</h2>
+
+      {/* Right Side */}
+      <div className="w-full md:w-1/2 bg-gradient-to-b from-[#1a1a1a] to-[#4c0519] flex items-center justify-center p-6 md:p-8">
+        <div className="bg-black p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center animate-pulse">Sign Up</h2>
           
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -106,6 +104,7 @@ const SignUp = () => {
               Sign Up
             </button>
           </form>
+
           <div className="text-center text-white mt-4">
             <button
               onClick={handleGoogleSignIn}

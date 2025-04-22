@@ -25,7 +25,7 @@ const Home = () => {
       <div className="mt-12"></div>
       <div className="text-center mt-8">
         <h2 className="text-2xl font-bold text-white">
-          Want more reviews? Explore my other takes from the navbar and discover more gems!
+         Want to see detailed reviews? Explore more and discover even more amazing finds!
         </h2>
       </div>
       <div className="mt-8"></div>

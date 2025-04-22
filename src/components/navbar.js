@@ -49,8 +49,8 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center w-full relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-6 text-lg">
+        <div className="hidden lg:flex items-center w-full">
+          <div className="flex-1 flex justify-center items-center space-x-6 text-lg">
             <Link to="/" className="hover:text-gray-200">Home</Link>
             <Link to="/about" className="hover:text-gray-200">About</Link>
 
@@ -87,12 +87,14 @@ const Navbar = () => {
               )}
             </div>
 
+            <Link to="/community-reviews" className="hover:text-gray-200">Community Reviews</Link>
             <Link to="/getintouch" className="hover:text-gray-200">Get in Touch</Link>
             <Link to="/wishlist" className="hover:text-gray-200">
               <FilmIcon className="w-6 h-6" />
             </Link>
           </div>
 
+          {/* Auth Section */}
           <div className="ml-auto">
             {isAuthenticated ? (
               <div className="relative">
@@ -155,6 +157,7 @@ const Navbar = () => {
           <Link to="/topshows" className="block" onClick={() => setIsMobileMenuOpen(false)}>Top Ten TV Shows</Link>
           <Link to="/getintouch" className="block" onClick={() => setIsMobileMenuOpen(false)}>Get in Touch</Link>
           <Link to="/wishlist" className="block" onClick={() => setIsMobileMenuOpen(false)}>Wishlist</Link>
+          <Link to="/community-reviews" className="block" onClick={() => setIsMobileMenuOpen(false)}>Community Reviews</Link>
 
           {isAuthenticated ? (
             <button

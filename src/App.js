@@ -3,8 +3,8 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import About from './pages/about'; 
-import HollyMovie from './pages/hollymovie'; 
+import About from './pages/about';
+import HollyMovie from './pages/hollymovie';
 import AsianMovie from './pages/asianmovie';
 import TvShow from './pages/tvshow';
 import AsianDramas from './pages/dramas';
@@ -15,6 +15,7 @@ import SignIn from './pages/signin';
 import SignUp from './pages/signup';
 import Wishlist from './pages/wishlist';
 import Home from './pages/home';
+import ReviewPage from './pages/reviewpage'; // Import the ReviewPage component
 import './App.css';
 
 const App = () => {
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/community-reviews" element={<ReviewPage />} /> {/* Added ReviewPage Route */}
         </Routes>
         {!hideNavbarAndFooter && <Footer />}
       </div>
