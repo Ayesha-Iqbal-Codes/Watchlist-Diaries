@@ -61,23 +61,25 @@ const MovieCard = ({ movie, onClick }) => {
 
 const MovieModal = ({ movie, onClose }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-      <div className="bg-gradient-to-b from-[#1a1a1a] to-[#4c0519] text-white p-8 rounded-lg flex w-full max-w-3xl h-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-2">
+      <div className="bg-gradient-to-b from-[#1a1a1a] to-[#4c0519] text-white p-3 sm:p-8 rounded-lg flex flex-col sm:flex-row w-full max-w-3xl h-auto">
         <img
           src={movie.image}
           alt={movie.title}
-          className="w-1/2 h-auto object-cover rounded-md mr-4"
+          className="w-full sm:w-1/2 h-32 sm:h-auto object-cover rounded-md mb-2 sm:mb-0 sm:mr-3"
         />
-        <div className="flex flex-col justify-between w-1/2">
+        <div className="flex flex-col justify-between w-full sm:w-1/2 text-xs sm:text-sm">
           <button
             onClick={onClose}
-            className="self-end text-2xl font-bold mb-4"
+            className="self-end text-lg sm:text-2xl font-bold mb-1 sm:mb-4"
           >
             X
           </button>
-          <h2 className="text-2xl font-bold mb-4">{movie.title}</h2>
-          <p className="text-lg mb-4">{movie.largeDescription}</p>
-          <p className="text-lg font-semibold">
+          <h2 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">
+            {movie.title}
+          </h2>
+          <p className="text-sm sm:text-lg mb-1 sm:mb-4">{movie.largeDescription}</p>
+          <p className="text-sm sm:text-lg font-semibold">
             Rating: {movie.rating}
           </p>
         </div>
@@ -85,6 +87,7 @@ const MovieModal = ({ movie, onClose }) => {
     </div>
   );
 };
+
 
 const MoviesReviewPage = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);

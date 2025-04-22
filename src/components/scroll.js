@@ -55,7 +55,7 @@ const ScrollSpy = () => {
     <div className="flex p-4">
       {/* Left Side - Latest Reviews */}
       <div className="w-1/4 bg-black text-white flex items-center justify-center">
-        <h2 className="text-3xl font-bold">Latest Reviews!</h2>
+        <h2 className="text-xl font-bold md:text-3xl">Latest Reviews!</h2>
       </div>
 
       {/* Right Side - Slides with Hidden Scrollbar */}
