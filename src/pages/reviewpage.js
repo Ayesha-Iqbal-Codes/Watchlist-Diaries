@@ -1,52 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { db } from '../firebase'; // your firebase.js
-import {
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  orderBy
-} from 'firebase/firestore';
+import { db } from '../firebase'; // Import the Firebase config
+import { collection, addDoc, onSnapshot, query, orderBy } from 'firebase/firestore'; // Firestore methods
 
 const ReviewPage = () => {
   const { user, isAuthenticated } = useAuth0();
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState('');
 
-  // Load reviews from Firestore
+  // Load reviews from Firestore (real-time updates)
   useEffect(() => {
-    const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'));
-
-    // Using onSnapshot for real-time updates
+    const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc')); // Fetch reviews ordered by createdAt
+    
+    // Listening for real-time changes in Firestore
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const fetchedReviews = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      setReviews(fetchedReviews); // Update state with fetched reviews
+      setReviews(fetchedReviews); // Update reviews state with data from Firestore
     });
 
-    return () => unsubscribe(); // Clean up listener when component unmounts
+    return () => unsubscribe(); // Clean up on component unmount
   }, []);
 
   const handleReviewChange = (e) => {
-    setNewReview(e.target.value);
+    setNewReview(e.target.value); // Update newReview state
   };
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
 
     if (newReview.trim()) {
-      // Add review to Firestore
-      await addDoc(collection(db, 'reviews'), {
-        userId: user?.sub,
-        userName: user?.name,
-        review: newReview,
-        createdAt: new Date(),
-      });
+      try {
+        // Add review to Firestore
+        await addDoc(collection(db, 'reviews'), {
+          userId: user?.sub, // User's unique ID from Auth0
+          userName: user?.name, // User's name from Auth0
+          review: newReview, // The review text submitted by the user
+          createdAt: new Date(), // Timestamp for when the review was created
+        });
 
-      setNewReview(''); // Reset the review input after submission
+        setNewReview(''); // Clear the review input field after submission
+      } catch (error) {
+        console.error('Error adding review: ', error); // Handle any errors
+      }
     }
   };
 
