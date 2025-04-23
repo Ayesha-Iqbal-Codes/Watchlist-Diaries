@@ -38,6 +38,7 @@ const ReviewPage = () => {
     e.preventDefault();
 
     if (newReview.trim()) {
+      // Add review to Firestore
       await addDoc(collection(db, 'reviews'), {
         userId: user?.sub,
         userName: user?.name,
