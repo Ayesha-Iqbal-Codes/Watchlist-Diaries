@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FilmIcon } from '@heroicons/react/24/outline';
 import logo from '../assets/logo.webp';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -43,18 +42,15 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 bg-gradient-to-r from-[#2d030f] to-[#4c0519] text-white p-2 shadow-lg z-50">
       <div className="container mx-auto flex items-center justify-between">
-        {/* Logo */}
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Logo" className="w-10 h-10 rounded-full" />
         </Link>
 
-        {/* Desktop Nav */}
         <div className="hidden lg:flex items-center w-full">
           <div className="flex-1 flex justify-center items-center space-x-6 text-lg">
             <Link to="/" className="hover:text-gray-200">Home</Link>
             <Link to="/about" className="hover:text-gray-200">About</Link>
 
-            {/* Movies Dropdown */}
             <div className="relative">
               <button onClick={() => toggleMenu(setIsMoviesOpen)} className="hover:text-gray-200">Movies</button>
               {isMoviesOpen && (
@@ -65,7 +61,6 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* TV Shows Dropdown */}
             <div className="relative">
               <button onClick={() => toggleMenu(setIsTvShowsOpen)} className="hover:text-gray-200">TV Shows</button>
               {isTvShowsOpen && (
@@ -76,7 +71,6 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Special Lists Dropdown */}
             <div className="relative">
               <button onClick={() => toggleMenu(setIsSpecialListsOpen)} className="hover:text-gray-200">Special Lists</button>
               {isSpecialListsOpen && (
@@ -88,13 +82,8 @@ const Navbar = () => {
             </div>
 
             <Link to="/community-reviews" className="hover:text-gray-200">Community Reviews</Link>
-            <Link to="/getintouch" className="hover:text-gray-200">Get in Touch</Link>
-            <Link to="/wishlist" className="hover:text-gray-200">
-              <FilmIcon className="w-6 h-6" />
-            </Link>
           </div>
 
-          {/* Auth Section */}
           <div className="ml-auto">
             {isAuthenticated ? (
               <div className="relative">
@@ -123,7 +112,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Hamburger (Mobile Only) */}
         <button
           className="lg:hidden z-50 relative text-white"
           data-toggle="mobile-menu"
@@ -144,7 +132,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div ref={mobileMenuRef} className="lg:hidden bg-[#3c0d15] px-6 py-4 text-white space-y-2">
           <Link to="/" className="block" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
@@ -155,8 +142,6 @@ const Navbar = () => {
           <Link to="/dramas" className="block" onClick={() => setIsMobileMenuOpen(false)}>Asian Dramas</Link>
           <Link to="/topmovies" className="block" onClick={() => setIsMobileMenuOpen(false)}>Top Ten Movies</Link>
           <Link to="/topshows" className="block" onClick={() => setIsMobileMenuOpen(false)}>Top Ten TV Shows</Link>
-          <Link to="/getintouch" className="block" onClick={() => setIsMobileMenuOpen(false)}>Get in Touch</Link>
-          <Link to="/wishlist" className="block" onClick={() => setIsMobileMenuOpen(false)}>Wishlist</Link>
           <Link to="/community-reviews" className="block" onClick={() => setIsMobileMenuOpen(false)}>Community Reviews</Link>
 
           {isAuthenticated ? (

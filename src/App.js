@@ -10,10 +10,8 @@ import TvShow from './pages/tvshow';
 import AsianDramas from './pages/dramas';
 import TopMovies from './pages/topmovies';
 import TopShows from './pages/topshows';
-import GetInTouch from './pages/getintouch';
 import SignIn from './pages/signin';
 import SignUp from './pages/signup';
-import Wishlist from './pages/wishlist';
 import Home from './pages/home';
 import ReviewPage from './pages/reviewpage'; // Import the ReviewPage component
 import './App.css';
@@ -39,11 +37,9 @@ const App = () => {
           <Route path="/dramas" element={<AsianDramas />} />
           <Route path="/topmovies" element={<TopMovies />} />
           <Route path="/topshows" element={<TopShows />} />
-          <Route path="/getintouch" element={<GetInTouch />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/community-reviews" element={<ReviewPage />} /> {/* Added ReviewPage Route */}
+          <Route path="/community-reviews" element={<ReviewPage />} />
         </Routes>
         {!hideNavbarAndFooter && <Footer />}
       </div>
