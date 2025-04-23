@@ -14,18 +14,20 @@ const ReviewPage = () => {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState('');
 
+  // Load reviews from Firestore
   useEffect(() => {
     const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'));
 
+    // Using onSnapshot for real-time updates
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const fetchedReviews = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      setReviews(fetchedReviews);
+      setReviews(fetchedReviews); // Update state with fetched reviews
     });
 
-    return () => unsubscribe(); // clean up listener on unmount
+    return () => unsubscribe(); // Clean up listener when component unmounts
   }, []);
 
   const handleReviewChange = (e) => {
@@ -42,7 +44,8 @@ const ReviewPage = () => {
         review: newReview,
         createdAt: new Date(),
       });
-      setNewReview('');
+
+      setNewReview(''); // Reset the review input after submission
     }
   };
 
