@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { db } from '../firebase'; // Import the Firebase config
-import { collection, addDoc, onSnapshot, query, orderBy } from 'firebase/firestore'; // Firestore methods
+import { db } from '../firebase'; // Import Firebase configuration
+import { collection, addDoc, onSnapshot, orderBy, query } from 'firebase/firestore'; // Firestore methods
 
 const ReviewPage = () => {
-  const { user, isAuthenticated } = useAuth0();
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState('');
 
-  // Load reviews from Firestore (real-time updates)
+  // Fetch reviews from Firestore (real-time updates)
   useEffect(() => {
     const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc')); // Fetch reviews ordered by createdAt
-    
-    // Listening for real-time changes in Firestore
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const fetchedReviews = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -33,15 +29,13 @@ const ReviewPage = () => {
 
     if (newReview.trim()) {
       try {
-        // Add review to Firestore
+        // Add the new review to Firestore
         await addDoc(collection(db, 'reviews'), {
-          userId: user?.sub, // User's unique ID from Auth0
-          userName: user?.name, // User's name from Auth0
           review: newReview, // The review text submitted by the user
           createdAt: new Date(), // Timestamp for when the review was created
         });
 
-        setNewReview(''); // Clear the review input field after submission
+        setNewReview(''); // Clear the input field after submission
       } catch (error) {
         console.error('Error adding review: ', error); // Handle any errors
       }
@@ -52,31 +46,26 @@ const ReviewPage = () => {
     <div className="p-6 max-w-4xl mx-auto">
       <h1 className="text-3xl font-semibold text-center text-gray-900 mb-6">Community Reviews</h1>
 
-      {isAuthenticated ? (
-        <div className="mb-6">
-          <textarea
-            className="w-full h-32 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={newReview}
-            onChange={handleReviewChange}
-            placeholder="Write your review here..."
-          />
-          <button
-            onClick={handleSubmitReview}
-            className="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            Submit Review
-          </button>
-        </div>
-      ) : (
-        <p className="text-center text-gray-600">Please log in to submit a review.</p>
-      )}
+      <div className="mb-6">
+        <textarea
+          className="w-full h-32 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={newReview}
+          onChange={handleReviewChange}
+          placeholder="Write your review here..."
+        />
+        <button
+          onClick={handleSubmitReview}
+          className="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          Submit Review
+        </button>
+      </div>
 
       <div className="mt-8">
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">Existing Reviews</h2>
         {reviews.length > 0 ? (
           reviews.map((review) => (
             <div key={review.id} className="bg-gray-100 p-4 mb-4 rounded-md shadow-md">
-              <h3 className="text-lg font-medium text-gray-800">{review.userName}</h3>
               <p className="text-gray-700 mt-2">{review.review}</p>
             </div>
           ))
