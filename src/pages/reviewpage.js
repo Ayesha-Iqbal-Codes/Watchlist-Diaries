@@ -1,40 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { db } from '../firebase'; // your firebase.js
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy
+} from 'firebase/firestore';
 
 const ReviewPage = () => {
   const { user, isAuthenticated } = useAuth0();
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState('');
 
-  // Load reviews from localStorage
   useEffect(() => {
-    const storedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
-    setReviews(storedReviews);
-  }, []);
+    const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'));
 
-  // Save reviews to localStorage
-  const saveReviewsToLocalStorage = (reviews) => {
-    localStorage.setItem('reviews', JSON.stringify(reviews));
-  };
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const fetchedReviews = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setReviews(fetchedReviews);
+    });
+
+    return () => unsubscribe(); // clean up listener on unmount
+  }, []);
 
   const handleReviewChange = (e) => {
     setNewReview(e.target.value);
   };
 
-  const handleSubmitReview = (e) => {
+  const handleSubmitReview = async (e) => {
     e.preventDefault();
 
-    if (newReview) {
-      const reviewData = {
+    if (newReview.trim()) {
+      await addDoc(collection(db, 'reviews'), {
         userId: user?.sub,
         userName: user?.name,
         review: newReview,
-        id: new Date().toISOString(),
-      };
-
-      const updatedReviews = [reviewData, ...reviews];
-      setReviews(updatedReviews);
-      saveReviewsToLocalStorage(updatedReviews);
+        createdAt: new Date(),
+      });
       setNewReview('');
     }
   };
