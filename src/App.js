@@ -1,5 +1,6 @@
 import React from 'react';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import { Route, Routes, useLocation } from 'react-router-dom';
@@ -13,7 +14,7 @@ import TopShows from './pages/topshows';
 import SignIn from './pages/signin';
 import SignUp from './pages/signup';
 import Home from './pages/home';
-import ReviewPage from './pages/reviewpage'; // Import the ReviewPage component
+import ReviewPage from './pages/reviewpage'; 
 import './App.css';
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
       redirectUri={window.location.origin}
     >
       <div className="bg-black min-h-screen">
+        <Analytics /> 
         {!hideNavbarAndFooter && <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />

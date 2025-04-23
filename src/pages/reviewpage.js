@@ -163,7 +163,7 @@ const ReviewPage = () => {
   return (
     <div className="bg-black min-h-screen text-white p-6 max-w-4xl mx-auto">
       <ToastContainer />
-      <h1 className="text-3xl font-bold text-center text-maroon-500 mb-4">Community Reviews</h1>
+      <h1 className=" text-center text-3xl text-white animate-pulse mb-4">Community Reviews</h1>
 
       <div className="bg-rose-300 text-black p-4 rounded-md text-sm mb-6">
         🎬 This space is for movie/drama lovers who enjoy sharing thoughts! Feel free to add your
@@ -300,3 +300,4 @@ const ReviewPage = () => {
 };
 
 export default ReviewPage;
+  

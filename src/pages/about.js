@@ -1,6 +1,6 @@
 import React from 'react';
-import './about.css'; // Importing CSS for styling
-import yourImage from '../assets/about.jpg'; // Replace with the path to your image
+import './about.css'; 
+import yourImage from '../assets/about.jpg'; 
 
 const About = () => {
   return (

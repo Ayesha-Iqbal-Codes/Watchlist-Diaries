@@ -53,27 +53,27 @@ const ScrollSpy = () => {
 
   return (
     <div className="flex p-4">
-      {/* Left Side - Latest Reviews */}
+     
       <div className="w-1/4 bg-black text-white flex items-center justify-center">
         <h2 className="text-xl font-bold md:text-3xl">Latest Reviews!</h2>
       </div>
 
-      {/* Right Side - Slides with Hidden Scrollbar */}
+     
       <div className="w-3/4 overflow-hidden h-[500px]">
         <div className="overflow-auto h-full scrollbar-hidden">
           {slides.map((slide, index) => (
             <section
               key={index}
               ref={(el) => (sectionsRef.current[index] = el)}
-              className="relative h-[400px] flex items-center justify-center bg-black-100 border border-black rounded-xl" // Black border with rounded corners
+              className="relative h-[400px] flex items-center justify-center bg-black-100 border border-black rounded-xl" 
             >
-              {/* Image Background */}
+              
               <img
                 src={slide.image}
                 alt={`Slide ${index + 1}`}
-                className="absolute inset-0 object-cover w-full h-full rounded-lg" // Ensure image respects rounded corners
+                className="absolute inset-0 object-cover w-full h-full rounded-lg" 
               />
-              {/* Text Overlay */}
+             
               <div className="relative z-10 text-center text-white">
                 <h2 className="text-4xl font-bold">{slide.title}</h2>
                 <p className="text-xl">{slide.description}</p>

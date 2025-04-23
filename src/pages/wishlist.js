@@ -6,7 +6,7 @@ const Wishlist = () => {
   const { isAuthenticated, user, loginWithRedirect } = useAuth0();
   const [items, setItems] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [editingItem, setEditingItem] = useState(null); // Track item being edited
+  const [editingItem, setEditingItem] = useState(null); 
   const [newItemTitle, setNewItemTitle] = useState('');
   const [newItemType, setNewItemType] = useState('Movie');
   const [newItemCategory, setNewItemCategory] = useState('');
@@ -210,16 +210,15 @@ const Wishlist = () => {
         </div>
       )}
 
-      {/* Wishlist Items */}
       <div className="space-y-4">
         {items.map((item, index) => (
           <div key={item._id} className="flex items-center p-4 border border-rose-950 rounded-lg shadow-sm bg-rose-950">
-            {/* Numbered Label */}
+           
             <span className="text-lg text-white mr-4">{index + 1}.</span>
             
             {item.image && (
               <img
-                src={`http://localhost:9000${item.image}`} // Remove any extra 'uploads'
+                src={`http://localhost:9000${item.image}`} 
                 alt={item.title}
                 className="w-16 h-45 object-cover rounded-lg mr-4"
               />

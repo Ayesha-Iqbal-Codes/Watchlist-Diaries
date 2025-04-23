@@ -5,7 +5,7 @@ import image3 from '../assets/am3.gif';
 import image4 from '../assets/am4.gif';
 import image7 from '../assets/am5.webp';
 
-// Update the categorizedMovies object with the specified Korean and Japanese movies
+
 const categorizedMovies = {
   'Korean Movies': [
     {
@@ -124,7 +124,7 @@ const MoviesReviewPage = () => {
         />
       </div>
 
-      {/* Iterate over the filtered categorizedMovies object */}
+     
       {Object.keys(filteredMovies).map((category, index) => (
         <div key={index} className="mb-8">
           <h2 className="text-2xl text-white mb-4">{category}</h2>
@@ -136,7 +136,7 @@ const MoviesReviewPage = () => {
         </div>
       ))}
 
-      {/* Modal for showing detailed movie information */}
+     
       {selectedMovie && <MovieModal movie={selectedMovie} onClose={handleCloseModal} />}
     </div>
   );

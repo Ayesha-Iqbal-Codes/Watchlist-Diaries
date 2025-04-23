@@ -1,17 +1,17 @@
-/* Hide scrollbar for WebKit-based browsers (Chrome, Safari) */
+
 *::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for WebKit browsers */
+  display: none; 
 }
 
-/* Hide scrollbar for IE and Firefox */
+
 * {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
 }
 
-/* Allow scrolling */
+
 body {
-  overflow-y: scroll; /* Allow vertical scrolling */
+  overflow-y: scroll; 
 }
 
 .App {
@@ -53,7 +53,7 @@ body {
   }
 }
 
-/* General mobile styles for devices with a max-width of 600px */
+
 @media only screen and (max-width: 600px) {
   .App-header {
     min-height: 100vh;
@@ -94,42 +94,42 @@ body {
   }
 }
 
-/* Additional styles for devices with a max-width of 450px */
+
 @media only screen and (max-width: 450px) {
   .App-header {
     padding: 15px;
-    font-size: calc(7px + 2vmin); /* Further reduce font size */
+    font-size: calc(7px + 2vmin); 
   }
 
   .App-logo {
-    height: 25vmin; /* Further reduce logo size */
-    margin-bottom: 15px; /* Reduce margin below the logo */
+    height: 25vmin; 
+    margin-bottom: 15px; 
   }
 
   .App-link {
-    font-size: 5vmin; /* Slightly increase link size */
+    font-size: 5vmin; 
   }
 
   .bg-black {
-    padding: 8px; /* Reduce padding to make better use of space */
+    padding: 8px; 
   }
 
   .navbar {
-    padding: 8px; /* Adjust padding */
+    padding: 8px; 
   }
 
   .navbar-item {
-    margin: 8px 0; /* Adjust spacing between navbar items */
-    font-size: 4vmin; /* Adjust font size for better readability */
+    margin: 8px 0; 
+    font-size: 4vmin; 
   }
 
   .footer {
-    font-size: 10px; /* Further reduce footer text size */
-    padding: 8px; /* Adjust padding */
+    font-size: 10px; 
+    padding: 8px; 
   }
 
   .page-content {
-    padding: 8px; /* Adjust padding for smaller screens */
+    padding: 8px; 
   }
 }
 
