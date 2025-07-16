@@ -3,7 +3,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import { Route, Routes, useLocation } from 'react-router-dom';
-
+import About from './pages/about';
 import HollyMovie from './pages/hollymovie';
 import AsianMovie from './pages/asianmovie';
 import TvShow from './pages/tvshow';
@@ -32,7 +32,7 @@ const App = () => {
         {!hideNavbarAndFooter && <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />
-         
+          <Route path="/about" element={<About />} />
           <Route path="/hollymovie" element={<HollyMovie />} />
           <Route path="/asianmovie" element={<AsianMovie />} />
           <Route path="/tvshow" element={<TvShow />} />
