@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center w-full">
           <div className="flex-1 flex justify-center items-center space-x-6 text-lg">
             <Link to="/" className="hover:text-gray-200">Home</Link>
-            
+            <Link to="/about" className="hover:text-gray-200">About</Link>
 
             <div className="relative">
               <button onClick={() => toggleMenu(setIsMoviesOpen)} className="hover:text-gray-200">Movies</button>
@@ -135,7 +135,7 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div ref={mobileMenuRef} className="lg:hidden bg-[#3c0d15] px-6 py-4 text-white space-y-2">
           <Link to="/" className="block" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-
+          <Link to="/about" className="block" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
           <Link to="/hollymovie" className="block" onClick={() => setIsMobileMenuOpen(false)}>Hollywood Movies</Link>
           <Link to="/asianmovie" className="block" onClick={() => setIsMobileMenuOpen(false)}>Asian Movies</Link>
           <Link to="/tvshow" className="block" onClick={() => setIsMobileMenuOpen(false)}>American Shows</Link>
