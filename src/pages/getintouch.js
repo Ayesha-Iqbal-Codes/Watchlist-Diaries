@@ -6,14 +6,14 @@ const GetInTouch = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [items, setItems] = useState([]); // For GET request data
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulate login status
+  const [items, setItems] = useState([]); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
-  // Fetch data on component mount
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/api/items'); // Example GET request
+        const response = await axios.get('http://localhost:9000/api/items'); 
         setItems(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -22,10 +22,10 @@ const GetInTouch = () => {
 
     fetchData();
 
-    // Simulate checking login status
+    
     const checkLoginStatus = () => {
-      // Example check, you might replace this with actual logic
-      const loggedIn = true; // Change this based on your auth logic
+      
+      const loggedIn = true; 
       setIsLoggedIn(loggedIn);
     };
 

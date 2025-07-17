@@ -1,6 +1,6 @@
 import react from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils"; // Adjust this import if needed
+import { cn } from "@/lib/utils"; 
 
 const backgroundbeams = react.memo(({ className }) => {
   const paths = [

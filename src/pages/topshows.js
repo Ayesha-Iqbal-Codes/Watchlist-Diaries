@@ -80,9 +80,9 @@ export default function TopTVShowsList() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsBouncing(false);
-    }, 1000); // Stop bouncing after 1 second
+    }, 1000); 
 
-    return () => clearTimeout(timer); // Cleanup the timer
+    return () => clearTimeout(timer); 
   }, []);
 
   const handleShowClick = (show) => {

@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import shadowhuntersImage from '../assets/show.jpg'; // Replace with actual path
-import vampireDiariesImage from '../assets/show4.jpg'; // Replace with actual path
-import teenWolfImage from '../assets/show5.jpg';  // Replace with actual path
-import macgyverImage from '../assets/show6.jpg';  // Replace with actual path
-import suitsImage from '../assets/show7.jpg';  // Replace with actual path
-import whiteCollarImage from '../assets/show8.jpg';  // Replace with actual path
-import flashImage from '../assets/show9.jpg'; // Replace with actual path
-import arrowImage from '../assets/show10.jpg'; // Replace with actual path
-import supernaturalImage from '../assets/show11.jpg'; // Replace with actual path
-import newAmsterdamImage from '../assets/show12.jpg';  // Replace with actual path
-import nancyDrewImage from '../assets/showw.gif';  // Replace with actual path
-import witcherImage from '../assets/show2.gif'; // Replace with actual path
-import anneWithEImage from '../assets/show14.jpg';  // Replace with actual path
-import brooklynNineNineImage from '../assets/show15.jpg';  // Replace with actual path
-import umbrellaAcademyImage from '../assets/show16.jpg'; // Replace with actual path
-import shadowAndBoneImage from '../assets/show3.jpg';  // Replace with actual path
+import shadowhuntersImage from '../assets/show.jpg'; 
+import vampireDiariesImage from '../assets/show4.jpg'; 
+import teenWolfImage from '../assets/show5.jpg';  
+import macgyverImage from '../assets/show6.jpg';  
+import suitsImage from '../assets/show7.jpg';  
+import whiteCollarImage from '../assets/show8.jpg';  
+import flashImage from '../assets/show9.jpg'; 
+import arrowImage from '../assets/show10.jpg'; 
+import supernaturalImage from '../assets/show11.jpg'; 
+import newAmsterdamImage from '../assets/show12.jpg';  
+import nancyDrewImage from '../assets/showw.gif';  
+import witcherImage from '../assets/show2.gif'; 
+import anneWithEImage from '../assets/show14.jpg';  
+import brooklynNineNineImage from '../assets/show15.jpg';  
+import umbrellaAcademyImage from '../assets/show16.jpg'; 
+import shadowAndBoneImage from '../assets/show3.jpg';  
 import bridgertonImage from '../assets/show18.jpg';
-import fateWinxSagaImage from '../assets/show111.gif';   // Replace with actual path
+import fateWinxSagaImage from '../assets/show111.gif';   
 
 const tvShows = {
   fantasy: [

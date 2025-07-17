@@ -256,7 +256,7 @@ const MoviesReviewPage = () => {
         </div>
       ))}
 
-      {/* Modal for showing detailed movie information */}
+      
       {selectedMovie && <MovieModal movie={selectedMovie} onClose={handleCloseModal} />}
     </div>
   );

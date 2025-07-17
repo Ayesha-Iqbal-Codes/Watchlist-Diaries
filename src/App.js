@@ -1,5 +1,6 @@
 import React from 'react';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import { Route, Routes, useLocation } from 'react-router-dom';
@@ -10,12 +11,10 @@ import TvShow from './pages/tvshow';
 import AsianDramas from './pages/dramas';
 import TopMovies from './pages/topmovies';
 import TopShows from './pages/topshows';
-import GetInTouch from './pages/getintouch';
 import SignIn from './pages/signin';
 import SignUp from './pages/signup';
-import Wishlist from './pages/wishlist';
 import Home from './pages/home';
-import ReviewPage from './pages/reviewpage'; // Import the ReviewPage component
+import ReviewPage from './pages/reviewpage'; 
 import './App.css';
 
 const App = () => {
@@ -29,6 +28,7 @@ const App = () => {
       redirectUri={window.location.origin}
     >
       <div className="bg-black min-h-screen">
+        <Analytics /> 
         {!hideNavbarAndFooter && <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />
@@ -39,11 +39,9 @@ const App = () => {
           <Route path="/dramas" element={<AsianDramas />} />
           <Route path="/topmovies" element={<TopMovies />} />
           <Route path="/topshows" element={<TopShows />} />
-          <Route path="/getintouch" element={<GetInTouch />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/community-reviews" element={<ReviewPage />} /> {/* Added ReviewPage Route */}
+          <Route path="/community-reviews" element={<ReviewPage />} />
         </Routes>
         {!hideNavbarAndFooter && <Footer />}
       </div>

@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
-import alchemyOfSoulsImage from '../assets/kdrama1.gif'; // Replace with actual path
-import deathGameImage from '../assets/kdrama2.jpg'; // Replace with actual path
-import seeYouInMy19thLifeImage from '../assets/kdrama3.jpg';  // Replace with actual path
-import queenOfTearsImage from '../assets/kdrama4.jpg';  // Replace with actual path
-import the8ShowImage from '../assets/kdrama5.jpg';  // Replace with actual path
-import squidGameImage from '../assets/kdrama6.jpg'; // Replace with actual path
-import hometownChaChaChaImage from '../assets/kdrama7.jpg'; // Replace with actual path
-import twinklingWatermelonImage from '../assets/kdrama8.jpg';  // Replace with actual path
-import goodBadMotherImage from '../assets/kdrama9.jpg';  // Replace with actual path
-import myNameImage from '../assets/kdrama10.jpg'; // Replace with actual path
-import vincenzoImage from '../assets/kdrama11.jpg'; // Replace with actual path
-import rebornRichImage from '../assets/kdrama12.jpg';  // Replace with actual path
-import tomorrowImage from '../assets/kdrama13.jpg';  // Replace with actual path
-import businessProposalImage from '../assets/kdrama14.jpg'; // Replace with actual path
-import flowerOfEvilImage from '../assets/kdrama15.jpg';  // Replace with actual path
-import arthdalChroniclesImage from '../assets/kdrama16.jpg';  // Replace with actual path
-import hotelDelLunaImage from '../assets/kdrama17.jpg'; // Replace with actual path
-import legendOfBlueSeaImage from '../assets/kdrama18.jpg'; // Replace with actual path
-import worstOfEvilImage  from '../assets/drama1.webp'; // Replace with actual path
-import kingTheLandImage from  '../assets/drama2.gif'; // Replace with actual path
-import aliceInBorderlandImage  from '../assets/jdrama4.gif'; // Replace with actual path
-import silentImage  from '../assets/jdrama2.gif'; // Replace with actual path
-import fermentsCuisineImage  from '../assets/jdrama3.webp'; // Replace with actual path
+import alchemyOfSoulsImage from '../assets/kdrama1.gif'; 
+import deathGameImage from '../assets/kdrama2.jpg'; 
+import seeYouInMy19thLifeImage from '../assets/kdrama3.jpg';  
+import queenOfTearsImage from '../assets/kdrama4.jpg';  
+import the8ShowImage from '../assets/kdrama5.jpg';  
+import squidGameImage from '../assets/kdrama6.jpg'; 
+import hometownChaChaChaImage from '../assets/kdrama7.jpg'; 
+import twinklingWatermelonImage from '../assets/kdrama8.jpg';  
+import goodBadMotherImage from '../assets/kdrama9.jpg';  
+import myNameImage from '../assets/kdrama10.jpg'; 
+import vincenzoImage from '../assets/kdrama11.jpg'; 
+import rebornRichImage from '../assets/kdrama12.jpg';  
+import tomorrowImage from '../assets/kdrama13.jpg';  
+import businessProposalImage from '../assets/kdrama14.jpg'; 
+import flowerOfEvilImage from '../assets/kdrama15.jpg';  
+import arthdalChroniclesImage from '../assets/kdrama16.jpg';  
+import hotelDelLunaImage from '../assets/kdrama17.jpg'; 
+import legendOfBlueSeaImage from '../assets/kdrama18.jpg'; 
+import worstOfEvilImage  from '../assets/drama1.webp'; 
+import kingTheLandImage from  '../assets/drama2.gif'; 
+import aliceInBorderlandImage  from '../assets/jdrama4.gif'; 
+import silentImage  from '../assets/jdrama2.gif'; 
+import fermentsCuisineImage  from '../assets/jdrama3.webp'; 
 import trillionGameImage from  '../assets/jdrama1.gif'; 
 import imagechinese1 from '../assets/chi1.gif'
 import imagechinese2 from '../assets/chi2.gif'
@@ -32,14 +32,6 @@ import thaidramaimage2 from  '../assets/thai2.gif'
 import thaidramaimage3 from  '../assets/thai3.webp'
 import thaidramaimage4 from  '../assets/thai4.gif'
 
-
-
-
-
-
-
-
-// Define images for Japanese, Chinese, and Thai dramas similarly
 
 const tvShows = {
   korean: [

@@ -161,45 +161,23 @@ const ReviewPage = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen text-white p-6 max-w-4xl mx-auto">
-      <ToastContainer />
-      <h1 className="text-3xl font-bold text-center text-maroon-500 mb-4">Community Reviews</h1>
+    <div className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-semibold text-center text-gray-900 mb-6">Community Reviews</h1>
 
-      <div className="bg-rose-300 text-black p-4 rounded-md text-sm mb-6">
-        🎬 This space is for movie/drama lovers who enjoy sharing thoughts! Feel free to add your
-        own reviews or express if you see things differently. Please refrain from using bad language
-        — keep it respectful and fun. This is for fans, by a fan 💬😊
+      <div className="mb-6">
+        <textarea
+          className="w-full h-32 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={newReview}
+          onChange={handleReviewChange}
+          placeholder="Write your review here..."
+        />
+        <button
+          onClick={handleSubmitReview}
+          className="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          Submit Review
+        </button>
       </div>
-
-      {isAuthenticated ? (
-        <form onSubmit={handleSubmitReview} className="mb-6">
-          <textarea
-            className="w-full h-32 p-4 bg-black border border-maroon-600 rounded-md focus:outline-none focus:ring-2 focus:ring-maroon-600"
-            value={newReview}
-            onChange={handleReviewChange}
-            placeholder="Write your review here..."
-          />
-
-          <select
-            className="mt-2 w-full p-3 bg-black text-white border border-maroon-600 rounded-md focus:outline-none focus:ring-2 focus:ring-maroon-600"
-            value={category}
-            onChange={handleCategoryChange}
-          >
-            <option value="">Select Category</option>
-            <option value="Movie">Movie</option>
-            <option value="TV Show">TV Show</option>
-          </select>
-
-          <button
-            type="submit"
-            className="mt-4 px-6 py-2 bg-rose-950 text-white font-semibold rounded-md hover:bg-maroon-700"
-          >
-            Submit Review
-          </button>
-        </form>
-      ) : (
-        <p className="text-center text-gray-400">Please log in to submit a review.</p>
-      )}
 
       <div className="mt-8">
         <h2 className="text-2xl font-semibold text-maroon-500 mb-4">Recent Reviews</h2>
@@ -300,3 +278,4 @@ const ReviewPage = () => {
 };
 
 export default ReviewPage;
+  

@@ -32,7 +32,7 @@ const SignUp = () => {
       return;
     }
 
-    // Handle sign-up logic here
+    
 
     navigate('/');
   };
@@ -51,7 +51,7 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
-      {/* Left Side */}
+     
       <div className="w-full md:w-1/2 bg-black flex flex-col items-center justify-center p-6 md:p-8 relative">
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center md:absolute md:top-68">
           Join Our Review Community!
@@ -61,7 +61,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      {/* Right Side */}
+     
       <div className="w-full md:w-1/2 bg-gradient-to-b from-[#1a1a1a] to-[#4c0519] flex items-center justify-center p-6 md:p-8">
         <div className="bg-black p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center animate-pulse">Sign Up</h2>

@@ -37,12 +37,12 @@ const Carousel = () => {
   ];
 
   return (
-    <section className="shadow-lg py-5"> {/* Reduced padding to remove space */}
+    <section className="shadow-lg py-5"> 
       <div className="overflow-hidden relative px-0.5" ref={carouselRef}>
         <div className="flex gap-2" style={{ width: 'max-content' }}>
           {cards.concat(cards).map((card, index) => (
-            <div key={index} className="flex-none w-[360px]"> {/* Set width to 360px */}
-              <div className="overflow-hidden rounded-2xl"> {/* Apply rounded-lg for a more subtle rounding */}
+            <div key={index} className="flex-none w-[360px]"> 
+              <div className="overflow-hidden rounded-2xl"> 
                 <img src={card.media} alt={`Slide ${index + 1}`} className="w-full h-[200px] object-cover rounded-lg" /> {/* Set height to fit better */}
               </div>
             </div>
